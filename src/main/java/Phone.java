@@ -29,7 +29,9 @@ public class Phone {
     public void outgoingCall(Phone incomingCallNumber) {
         if (this.isRegister()) {
             if (incomingCallNumber.isRegister()) {
+                if(this!=incomingCallNumber){
                 incomingCallNumber.incomingCall(this);
+                } else System.out.println("You can't call to own number" +incomingCallNumber.getPhoneNumber());
             } else
                 System.out.println("The number(" + incomingCallNumber.getPhoneNumber() + ") you want to call is not registered");
         } else System.out.println("The number(" + this.getPhoneNumber() + ") you want to call from is not registered");
@@ -40,10 +42,10 @@ public class Phone {
     }
 
     public void register() {
-        if (!isRegister()) network.getPhones().add(this);
+        network.register(this);
     }
 
     public boolean isRegister() {
-        return network.getPhones().contains(this);
+        return network.isRegister(this);
     }
 }

@@ -19,7 +19,13 @@ public class Network {
     public void setNetworkName(String networkName) {
         this.networkName = networkName;
     }
-    public List<Phone> getPhones(){
-        return phones;
+
+
+    public boolean isRegister(Phone phone) {
+        return phones.contains(phone);
+    }
+
+    public void register(Phone phone) {
+        if (!isRegister(phone)) phones.add(phone);
     }
 }
